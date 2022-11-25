@@ -1,0 +1,41 @@
+.header-container{
+    background-color: var(--primary-bg-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px;
+}
+
+.icon-title-container{
+    display: flex;
+    align-items: center;
+}
+
+.icon-title-container h1{
+    color: var(--secondary-text-color);
+    font-weight: 300;
+    margin-left: 16px;
+}
+
+.bitcoin-icon{
+    color: var(--secondary-text-color);
+    font-size: 40px;
+}
+
+.nav-container{
+    display: flex;
+    font-size: 26px;
+    font-weight: 200;
+    color: var(--secondary-text-color);
+}
+
+.link{
+    text-decoration: none;
+    margin-right: 20px;
+    color: var(--secondary-text-color);
+}
+
+.contact-overlay{
+    width: 0px;
+    z-index: 2;
+}

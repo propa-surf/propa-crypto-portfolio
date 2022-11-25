@@ -5,7 +5,10 @@
 }
 
 :root{
-  background-color: blue;
+  --primary-bg-color: #212526;
+  --secondary-bg-color: #ffffff;
+  --primary-text-color: #212526;
+  --secondary-text-color: #ffffff;
 }
 
 a{
@@ -15,6 +18,6 @@ a{
 html, body{
   height: 100%;
   width: 100%;
-  font-family: 'Inter', sans-serif;
+  font-family: 'KoHo Regular', sans-serif;
 }
 

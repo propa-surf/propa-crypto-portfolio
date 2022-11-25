@@ -1,0 +1,46 @@
+.modal-container{
+    position: absolute;
+    top: 30%;
+    left: 31%;
+    width: 40vw;
+    display:flex;
+    justify-content: space-between;
+    background-color: var(--secondary-bg-color);
+    padding: 16px;
+    border-radius: 8px;
+    box-shadow: 3px 3px 9px black;
+}
+
+.contact-details-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 60%;
+}
+
+.contact-details-container h2{
+    font-weight: 300;
+}
+
+.contact-details{
+    font-size: 20px;
+    font-weight: 300;
+}
+
+.company-email{
+    margin-top: 8px;
+}
+
+.close-btn{
+    width:50%;
+    border: none;
+    background-color: var(--primary-bg-color);
+    color: var(--secondary-text-color);
+    border-radius: 8px;
+    padding: 4px 0px;
+    margin-top: 48px;
+}
+
+.contact-image{
+    width: 13vw;
+}

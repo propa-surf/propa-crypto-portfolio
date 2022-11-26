@@ -29,6 +29,10 @@
     color: var(--secondary-text-color);
 }
 
+.nav-container p{
+    cursor: pointer;
+}
+
 .link{
     text-decoration: none;
     margin-right: 20px;

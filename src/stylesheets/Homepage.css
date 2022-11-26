@@ -35,8 +35,42 @@
     height: 80%;
     width: 60%;
     border-radius: 16px;
+    padding: 16px;
+}
+
+.homepage-slider-container h3{
+    margin-bottom: 16px;
 }
 
 .homepage-slider-container button{
     width: 50px;
+}
+
+.coin-list-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0px;
+    border: solid 1px var(--primary-bg-color);
+}
+
+.coin-list-image-name{
+    display: flex;
+    align-items: center;
+}
+
+.coin-list-image-name img{
+    width: 25px;
+    margin: 0px 8px;
+}
+
+.coin-list-price-mcap{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-right: 8px;
+}
+
+.coin-list-spacer{
+    margin: 0px 8px;
 }

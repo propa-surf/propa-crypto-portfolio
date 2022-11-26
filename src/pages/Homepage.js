@@ -21,15 +21,10 @@ function Homepage({baseUrl}) {
     useEffect(()=>{
         axios.get(`${baseUrl}/search/trending`)
         .then(res=>{
-            console.log(res.data.coins)
             setTrendCoins(res.data.coins)
         })
         .catch(err=>console.log(err))
     }, [])
-
-    const handleCoinSwitch=()=>{
-        console.log('1')
-    }
 
   return (
     <div className='homepage-container'>
@@ -37,9 +32,24 @@ function Homepage({baseUrl}) {
             <div className='overlay'></div>
             <div className='homepage-slider-container'>
                 <h3 className='homepage-coin-list-header'>{currentDisplay === topCoins ? 'Top 10 Coins' : 'Top 7 Trending Coins'}</h3>
-                <button onClick={handleCoinSwitch}>L</button>
+                {
+                    currentDisplay.map(item=>{
+                        return <div key={item.id} className='coin-list-container'>
+                                    <div className='coin-list-image-name'>
+                                        <img src={item.image} alt={item.id}/>
+                                        <p className='coin-list-name'>{item.name}</p>
+                                    </div>
+                                    <div className='coin-list-price-mcap'>
+                                        <p className='coin-list-price'>Current Price: ${item.current_price}</p>
+                                        <p className='coin-list-spacer'>|</p>
+                                        <p className='coin-list-mcap'>Current MCap: ${(item.market_cap/1000000000).toFixed(2)} Billion</p>
+                                    </div>
+                                </div>
+                    })
+                }
+                {/* <button onClick={handleListSwitch}>L</button>
                 SPACE
-                <button onClick={handleCoinSwitch}>R</button>
+                <button onClick={handleListSwitch}>R</button> */}
             </div>
         </div>
     </div>

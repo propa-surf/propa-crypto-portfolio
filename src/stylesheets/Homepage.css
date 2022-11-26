@@ -1,0 +1,51 @@
+.homepage-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.homepage-background{
+    background: url('../assets/coins.jpeg');
+    background-position: center;
+    background-repeat: none;
+    background-size: cover;
+    height: 80vh;
+    width: 85vw;
+    margin: 48px 56px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 16px;
+    box-shadow: 3px 3px 9px var(--primary-bg-color);
+    z-index: 0;
+}
+
+.overlay{
+    position: absolute;
+    background-color: black;
+    width: 85vw;
+    height: 80vh;
+    z-index: -1;
+    opacity: 30%;
+    border-radius: 16px;
+}
+
+.homepage-slider-container{
+    background-color: var(--secondary-bg-color);
+    height: 525px;
+    width: 675px;
+    border-radius: 16px;
+    padding: 16px;
+}
+
+.homepage-slider-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.homepage-slider-btn{
+    width: 150px;
+    cursor: pointer;
+}

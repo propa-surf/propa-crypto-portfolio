@@ -1,0 +1,30 @@
+.coin-list-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0px;
+    margin-bottom: 4px;
+    box-shadow: 1px 1px 3px var(--primary-bg-color);
+    border-radius: 4px;
+}
+
+.coin-list-image-name{
+    display: flex;
+    align-items: center;
+}
+
+.coin-list-image-name img{
+    width: 25px;
+    margin: 0px 8px;
+}
+
+.coin-list-price-mcap{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-right: 8px;
+}
+
+.coin-list-spacer{
+    margin: 0px 8px;
+}

@@ -9,8 +9,8 @@
     background-position: center;
     background-repeat: none;
     background-size: cover;
-    height: 70vh;
-    width: 70vw;
+    height: 80vh;
+    width: 85vw;
     margin: 48px 56px;
     display: flex;
     justify-content: center;
@@ -23,8 +23,8 @@
 .overlay{
     position: absolute;
     background-color: black;
-    width: 70vw;
-    height: 70vh;
+    width: 85vw;
+    height: 80vh;
     z-index: -1;
     opacity: 30%;
     border-radius: 16px;
@@ -32,45 +32,19 @@
 
 .homepage-slider-container{
     background-color: var(--secondary-bg-color);
-    height: 80%;
-    width: 60%;
+    height: 525px;
+    width: 675px;
     border-radius: 16px;
     padding: 16px;
 }
 
-.homepage-slider-container h3{
+.homepage-slider-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     margin-bottom: 16px;
 }
 
-.homepage-slider-container button{
-    width: 50px;
-}
-
-.coin-list-container{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 8px 0px;
-    border: solid 1px var(--primary-bg-color);
-}
-
-.coin-list-image-name{
-    display: flex;
-    align-items: center;
-}
-
-.coin-list-image-name img{
-    width: 25px;
-    margin: 0px 8px;
-}
-
-.coin-list-price-mcap{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-right: 8px;
-}
-
-.coin-list-spacer{
-    margin: 0px 8px;
+.homepage-slider-btn{
+    width: 150px;
 }

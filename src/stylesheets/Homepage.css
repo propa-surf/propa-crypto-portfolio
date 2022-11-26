@@ -17,7 +17,7 @@
     align-items: center;
     border-radius: 16px;
     box-shadow: 3px 3px 9px var(--primary-bg-color);
-    z-index: -2;
+    z-index: 0;
 }
 
 .overlay{
@@ -47,4 +47,5 @@
 
 .homepage-slider-btn{
     width: 150px;
+    cursor: pointer;
 }

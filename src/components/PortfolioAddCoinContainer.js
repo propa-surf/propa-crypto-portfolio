@@ -27,7 +27,7 @@ function PortfolioAddCoinContainer({allCoins}) {
                     ? <div className='coin-search-results'>
                         {
                             searchedCoin.map(setCoin=>{
-                                return <CoinDetails setCoin={setCoin} setChosenCoin={setChosenCoin}/>
+                                return <CoinDetails setCoin={setCoin} setChosenCoin={setChosenCoin} setQuery={setQuery}/>
                             })
                         }
                     </div>

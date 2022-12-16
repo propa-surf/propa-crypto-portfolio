@@ -4,8 +4,8 @@ import {BrowserRouter, Routes, Route} from 'react-router-dom'
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Homepage from './pages/Homepage';
-import Register from './pages/Register';
-import SignIn from './pages/SignIn';
+import Authentication from './pages/Authentication';
+import Portfolio from './pages/Portfolio';
 
 function App() {
 
@@ -16,8 +16,8 @@ function App() {
       <Header/>
       <Routes>
           <Route path='/' element={<Homepage baseUrl={baseUrl}/>}/>
-          <Route path='/register' element={<Register/>}/>
-          <Route path='/login' element={<SignIn/>}/>
+          <Route path='/auth' element={<Authentication/>}/>
+          <Route path='/portfolio' element={<Portfolio baseUrl={baseUrl}/>}/>
       </Routes>
       <Footer/>
     </BrowserRouter>

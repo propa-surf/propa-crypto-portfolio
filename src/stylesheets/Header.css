@@ -9,6 +9,7 @@
 .icon-title-container{
     display: flex;
     align-items: center;
+    cursor: pointer;
 }
 
 .icon-title-container h1{
@@ -27,6 +28,10 @@
     font-size: 26px;
     font-weight: 200;
     color: var(--secondary-text-color);
+}
+
+.nav-container p{
+    cursor: pointer;
 }
 
 .link{

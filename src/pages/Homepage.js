@@ -24,7 +24,6 @@ function Homepage({baseUrl}) {
         axios.get(`${baseUrl}/search/trending`)
         .then(res=>{
             setTrendCoins(res.data.coins)
-            // setCurrentDisplay(res.data.coins)
         })
         .catch(err=>console.log(err))
     }, [])

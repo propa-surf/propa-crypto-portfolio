@@ -9,6 +9,7 @@
 .icon-title-container{
     display: flex;
     align-items: center;
+    cursor: pointer;
 }
 
 .icon-title-container h1{

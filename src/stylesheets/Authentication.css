@@ -1,0 +1,81 @@
+.authentication-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.authentication-background{
+    background: url('../assets/coinstack.jpeg');
+    background-position: center;
+    background-repeat: none;
+    background-size: cover;
+    height: 80vh;
+    width: 85vw;
+    margin: 48px 56px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 16px;
+    box-shadow: 3px 3px 9px var(--primary-bg-color);
+    z-index: 0;
+}
+
+.authentication-form{
+    background-color: var(--secondary-bg-color);
+    width: 400px;
+    border-radius: 16px;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: solid 1px var(--primary-bg-color);
+}
+
+.authentication-form h2{
+    font-weight: 400;
+}
+
+.authentication-form-input{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin: 24px 0px;
+    width: 80%;
+}
+
+.authentication-nickname, .authentication-email, .authentication-password{
+    width: 100%;
+    margin-bottom: 16px;
+    padding: 8px 0px 8px 8px;
+    border: none;
+    border-radius: 8px;
+    box-shadow: 2px 2px 6px var(--primary-bg-color);
+}
+
+.authentication-terms-and-conditions{
+    display: flex;
+    align-items: center;
+}
+
+.authentication-terms{
+    margin-left: 8px;
+}
+
+.authentication-form-button{
+    width: 100px;
+    padding: 8px 0px;
+    border: none;
+    box-shadow: 0px 0px 3px 1px var(--primary-bg-color);
+    border-radius: 8px;
+    background-color: var(--secondary-bg-color);
+    margin-bottom: 16px;
+    cursor: pointer;
+}
+
+.authentication-right-form-check{
+    font-style: italic;
+    font-weight: 600;
+    margin-left: 8px;
+    cursor: pointer;
+}

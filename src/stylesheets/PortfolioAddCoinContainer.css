@@ -1,0 +1,76 @@
+.portfolio-search-container{
+    background-color: var(--secondary-bg-color);
+    margin-left: 24px;
+    width: 500px;
+    border-radius: 16px;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+}
+
+.portfolio-search-header, .portfolio-search-account, .portfolio-search-coin, .portfolio-search-coin-search-field, .portfolio-search-add-field, .portfolio-search-summary{
+    margin-bottom: 20px;
+}
+
+.coin-search-field, .coin-current-price, .coin-current-mcap, .coin-add-field, .summary-position, .summary-coin, .summary-amount{
+    margin-bottom: 4px;
+}
+
+.portfolio-search-coin{
+    display: flex;
+    flex-direction: column;
+}
+
+.portfolio-search-coin-stats{
+    display: flex;
+    justify-content: flex-start;
+}
+
+.portfolio-search-coin-search-field, .portfolio-search-add-field{
+    display: flex;
+    flex-direction: column;
+    width: 250px;
+}
+
+.summary-position{
+    text-decoration: underline;
+}
+
+#coin-search-field, #coin-add-field{
+    border: none;
+    padding: 8px 4px;
+    margin-bottom: 4px;
+    box-shadow: 1px 1px 3px var(--primary-bg-color);
+    border-radius: 4px;
+}
+
+.coin-current-price-display, .coin-current-mcap-display{
+    border: none;
+    padding: 8px 4px;
+    margin-bottom: 4px;
+    box-shadow: 1px 1px 3px var(--primary-bg-color);
+    border-radius: 4px;
+    width: 120px;
+}
+
+.coin-current-price-display{
+    margin-right: 8px;
+}
+
+.portfolio-search-summary, .portfolio-search-account{
+    border: none;
+    padding: 8px 4px;
+    box-shadow: 1px 1px 3px var(--primary-bg-color);
+    border-radius: 4px;
+}
+
+.add-btn{
+    background-color: var(--primary-bg-color);
+    color: var(--secondary-text-color);
+    border: none;
+    padding: 8px 4px;
+    box-shadow: 1px 1px 3px var(--primary-bg-color);
+    border-radius: 4px;
+    width: 120px;
+    font-size: 16px;
+}

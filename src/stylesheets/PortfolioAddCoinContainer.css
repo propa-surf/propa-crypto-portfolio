@@ -46,7 +46,8 @@
 
 .coin-current-price-display, .coin-current-mcap-display{
     border: none;
-    padding: 8px 4px;
+    padding: 6px 4px;
+    height: 30px;
     margin-bottom: 4px;
     box-shadow: 1px 1px 3px var(--primary-bg-color);
     border-radius: 4px;

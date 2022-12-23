@@ -10,7 +10,7 @@ function PortfolioAddCoinContainer({allCoins}) {
     const[query, setQuery] = useState('')
     const[searchedCoin,setSearchedCoin] = useState('')
     const[chosenCoin,setChosenCoin] = useState('')
-    const[amountCoin, setAmountCoin] = useState(0)
+    const[amountCoin, setAmountCoin] = useState('')
     const[portfolioUpdate, setPortfolioUpdate]=useState({
         symbol:'',
         amount:''
@@ -26,7 +26,7 @@ function PortfolioAddCoinContainer({allCoins}) {
     const handlePortfolioUpdate=(e)=>{
         e.preventDefault();
         console.log(portfolioUpdate)
-        setAmountCoin(0)
+        setAmountCoin('')
         setChosenCoin('')
         setPortfolioUpdate('')
         setInputSearchField('')
@@ -76,7 +76,7 @@ function PortfolioAddCoinContainer({allCoins}) {
         </div>
         <button className='add-btn'>Add</button>
     </form>
-    <button className='clear-btn' onClick={()=>{setQuery('');setAmountCoin(0);setChosenCoin('');setPortfolioUpdate({symbol:'',amount:''});setInputSearchField('')}}>Clear</button>
+    <button className='clear-btn' onClick={()=>{setQuery('');setAmountCoin('');setChosenCoin('');setPortfolioUpdate({symbol:'',amount:''});setInputSearchField('')}}>Clear</button>
     </div>
   )
 }

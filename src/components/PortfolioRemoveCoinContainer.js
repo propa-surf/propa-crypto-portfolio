@@ -1,7 +1,22 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import '../stylesheets/PortfolioRemoveCoinContainer.css'
+// import {db, auth} from '../config/FirebaseConfig'
+// import { setDocs,getDocs, collection } from 'firebase/firestore'
 
 function PortfolioRemoveCoinContainer() {
+
+  // useEffect(() => {
+  //   const coinPortfolio = collection(db, 'userID')
+
+  //   getDocs(coinPortfolio)
+  //   .then(res=>{
+  //     console.log(res)
+  //   })
+  //   .catch(err=>console.log(err))
+  // }, [])
+  
+
+
   return (
     <div className='portfolio-display-container'>
       <h3 className='portfolio-display-header'>Portfolio</h3>

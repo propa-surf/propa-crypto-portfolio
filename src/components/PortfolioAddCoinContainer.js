@@ -2,6 +2,8 @@ import { all } from 'axios'
 import React, {useState} from 'react'
 import '../stylesheets/PortfolioAddCoinContainer.css'
 import CoinDetails from './CoinDetails'
+import {dp,auth} from '../config/FirebaseConfig'
+import { setDocs,getDocs, collection } from 'firebase/firestore'
 
 function PortfolioAddCoinContainer({allCoins}) {
 
@@ -9,30 +11,42 @@ function PortfolioAddCoinContainer({allCoins}) {
     const[searchedCoin,setSearchedCoin] = useState('')
     const[chosenCoin,setChosenCoin] = useState('')
     const[amountCoin, setAmountCoin] = useState(0)
+    const[portfolioUpdate, setPortfolioUpdate]=useState({
+        symbol:'',
+        amount:''
+    })
+    const[inputSearchField, setInputSearchField]=useState('')
 
     const handleSearch=(e)=>{
+        setInputSearchField(e.target.value)
         setQuery(e.target.value)
         setSearchedCoin(allCoins.filter(coin => coin.name.includes(`${query}`)))
     }
 
-    const handleAmount=(e)=>{
-        setAmountCoin(e.target.value)
+    const handlePortfolioUpdate=(e)=>{
+        e.preventDefault();
+        console.log(portfolioUpdate)
+        setAmountCoin(0)
+        setChosenCoin('')
+        setPortfolioUpdate('')
+        setInputSearchField('')
     }
 
   return (
-    <form className='portfolio-search-container'>
+    <div className='portfolio-search-main-container'>
+    <form className='portfolio-search-container' onSubmit={handlePortfolioUpdate}>
         <h3 className='portfolio-search-header'>Account</h3>
         <p className='portfolio-search-account'>Account-ID: Satoshi-Placeholder-Firebase</p>
         <div className='portfolio-search-coin'>
             <div className='portfolio-search-coin-search-field'>
                 <label htmlFor='coin-search-field' className='coin-search-field'>Coin:</label>
-                <input type='text' id='coin-search-field' placeholder='Coin Name' onChange={handleSearch} required/>
+                <input type='text' id='coin-search-field' placeholder='Coin Name' value={inputSearchField} onChange={handleSearch} required/>
                 {
                     query!==''
                     ? <div className='coin-search-results'>
                         {
                             searchedCoin.map(setCoin=>{
-                                return <CoinDetails setCoin={setCoin} setChosenCoin={setChosenCoin} setQuery={setQuery}/>
+                                return <CoinDetails key={setCoin.symbol} setCoin={setCoin} setChosenCoin={setChosenCoin} setQuery={setQuery} setPortfolioUpdate={setPortfolioUpdate}/>
                             })
                         }
                     </div>
@@ -52,7 +66,7 @@ function PortfolioAddCoinContainer({allCoins}) {
         </div>
         <div className='portfolio-search-add-field'>
             <label htmlFor='coin-add-field' className='coin-add-field'>Add Amount:</label>
-            <input type='number' id='coin-add-field' placeholder='Amount' min='0.000001' onChange={handleAmount}required/>
+            <input type='number' id='coin-add-field' placeholder='Amount' value={amountCoin} min='>0' onChange={(e)=>{setAmountCoin(e.target.value);setPortfolioUpdate({...portfolioUpdate, amount: e.target.value})}} required/>
         </div>
         <div className='portfolio-search-summary'>
             <p className='summary-position'>Summary Position</p>
@@ -62,6 +76,8 @@ function PortfolioAddCoinContainer({allCoins}) {
         </div>
         <button className='add-btn'>Add</button>
     </form>
+    <button className='clear-btn' onClick={()=>{setQuery('');setAmountCoin(0);setChosenCoin('');setPortfolioUpdate({symbol:'',amount:''});setInputSearchField('')}}>Clear</button>
+    </div>
   )
 }
 

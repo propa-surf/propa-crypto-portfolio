@@ -1,7 +1,8 @@
 import React, {useState} from 'react'
 import '../stylesheets/Authentication.css'
-import { auth } from '../config/FirebaseConfig'
+import { auth, db } from '../config/FirebaseConfig'
 import {createUserWithEmailAndPassword, updateProfile, signInWithEmailAndPassword} from 'firebase/auth'
+import { doc, setDoc } from 'firebase/firestore'
 import {useNavigate} from 'react-router-dom'
 
 function Authentication() {
@@ -17,6 +18,7 @@ function Authentication() {
     createUserWithEmailAndPassword(auth, email, password)
     .then(res=>{
       updateProfile(auth.currentUser, {displayName:nickname})
+      setDoc(doc(db, 'portfolios', `${auth.currentUser.uid}`),{})
       navigate('/')
     })
     .catch(err=>{alert(err.code)})

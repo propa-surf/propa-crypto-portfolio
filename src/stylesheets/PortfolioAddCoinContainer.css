@@ -1,9 +1,12 @@
-.portfolio-search-container{
+.portfolio-search-main-container{
     background-color: var(--secondary-bg-color);
     margin-left: 24px;
-    width: 500px;
-    border-radius: 16px;
     padding: 16px;
+    border-radius: 16px;
+}
+
+.portfolio-search-container{
+    width: 500px;
     display: flex;
     flex-direction: column;
 }
@@ -66,6 +69,18 @@
 }
 
 .add-btn{
+    background-color: var(--primary-bg-color);
+    color: var(--secondary-text-color);
+    border: none;
+    padding: 8px 4px;
+    box-shadow: 1px 1px 3px var(--primary-bg-color);
+    border-radius: 4px;
+    width: 120px;
+    font-size: 16px;
+    margin-bottom: 8px;
+}
+
+.clear-btn{
     background-color: var(--primary-bg-color);
     color: var(--secondary-text-color);
     border: none;

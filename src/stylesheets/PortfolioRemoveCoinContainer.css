@@ -14,18 +14,19 @@
 
 .portfolio-display-table{
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
     border: none;
     padding: 8px 4px;
     box-shadow: 1px 1px 3px var(--primary-bg-color);
     border-radius: 4px;
 }
 
-.portfolio-display-coin, .portfolio-display-amount, .portfolio-display-worth, .portfolio-display-allocation{
-    width: 25%;
+.portfolio-display-table-header{
+    display: flex;
+    justify-content: space-between;
 }
 
-.column-coin, .column-amount, .column-worth, .column-allocation, .portfolio-display-remove-coin, .coin-selection-remove, .amount-selection-remove{
+.portfolio-display-remove-coin, .coin-selection-remove, .amount-selection-remove{
     margin-bottom: 4px;
 }
 
@@ -60,4 +61,14 @@
     border-radius: 4px;
     width: 120px;
     font-size: 16px;
+}
+
+.portfolio-display-coin{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.portfolio-image-display{
+    width: 20px;
 }

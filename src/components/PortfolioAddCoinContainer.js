@@ -1,11 +1,10 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState} from 'react'
 import '../stylesheets/PortfolioAddCoinContainer.css'
 import CoinDetails from './CoinDetails'
 import {db} from '../config/FirebaseConfig'
-import { getDocs, setDoc, doc, collection } from 'firebase/firestore'
-import { getAuth } from "firebase/auth"
+import { setDoc, doc, updateDoc } from 'firebase/firestore'
 
-function PortfolioAddCoinContainer({allCoins}) {
+function PortfolioAddCoinContainer({allCoins, userCoins, portfolioUser}) {
 
     const[query, setQuery] = useState('')
     const[searchedCoin,setSearchedCoin] = useState('')
@@ -16,23 +15,7 @@ function PortfolioAddCoinContainer({allCoins}) {
         amount:''
     })
     const[inputSearchField, setInputSearchField]=useState('')
-
-    const user = getAuth();
-    const portfolioUser = user.currentUser
-
-    useEffect(() => {
-        const coinsRef=collection(db,'portfolios',`${portfolioUser.uid}`, 'coins')
-        getDocs(coinsRef)
-        .then(res=>{
-            const userCoins = res.docs.map(item=>({
-                ...item.data()
-            }))
-            console.log(userCoins)
-        })
-        .catch(err=>console.log(err))
-    }, [])
     
-
     const handleSearch=(e)=>{
         setInputSearchField(e.target.value)
         setQuery(e.target.value)
@@ -40,8 +23,12 @@ function PortfolioAddCoinContainer({allCoins}) {
     }
 
     const handlePortfolioUpdate=(e)=>{
-        e.preventDefault();
-        setDoc(doc(db, 'portfolios', `${portfolioUser.uid}`, 'coins', `${portfolioUpdate.symbol}`), portfolioUpdate)
+        e.preventDefault()
+        const addUserCoin = userCoins.filter(coinList => coinList.symbol === portfolioUpdate.symbol)
+        const addUserCoinAmount=addUserCoin.map(item =>{return item.amount})
+        addUserCoinAmount !== ''
+        ? updateDoc(doc(db, 'portfolios', `${portfolioUser.uid}`, 'coins', `${portfolioUpdate.symbol}`), {amount: `${parseFloat(addUserCoinAmount)+parseFloat(portfolioUpdate.amount)}`})
+        : setDoc(doc(db, 'portfolios', `${portfolioUser.uid}`, 'coins', `${portfolioUpdate.symbol}`), portfolioUpdate)
         setAmountCoin('')
         setChosenCoin('')
         setPortfolioUpdate('')

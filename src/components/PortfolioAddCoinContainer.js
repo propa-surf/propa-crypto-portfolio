@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import '../stylesheets/PortfolioAddCoinContainer.css'
 import CoinDetails from './CoinDetails'
 import {db} from '../config/FirebaseConfig'
-import { setDoc, doc, updateDoc } from 'firebase/firestore'
+import { addDoc, doc, updateDoc } from 'firebase/firestore'
 
 function PortfolioAddCoinContainer({allCoins, userCoins, portfolioUser}) {
 
@@ -24,11 +24,11 @@ function PortfolioAddCoinContainer({allCoins, userCoins, portfolioUser}) {
 
     const handlePortfolioUpdate=(e)=>{
         e.preventDefault()
-        const addUserCoin = userCoins.filter(coinList => coinList.symbol === portfolioUpdate.symbol)
-        const addUserCoinAmount=addUserCoin.map(item =>{return item.amount})
-        addUserCoinAmount !== ''
-        ? updateDoc(doc(db, 'portfolios', `${portfolioUser.uid}`, 'coins', `${portfolioUpdate.symbol}`), {amount: `${parseFloat(addUserCoinAmount)+parseFloat(portfolioUpdate.amount)}`})
-        : setDoc(doc(db, 'portfolios', `${portfolioUser.uid}`, 'coins', `${portfolioUpdate.symbol}`), portfolioUpdate)
+        const addUserCoin = userCoins?.filter(coinList => coinList?.symbol === portfolioUpdate?.symbol)
+        const addUserCoinAmount=addUserCoin[0]?.amount
+        addUserCoinAmount
+        ? updateDoc(doc(db, 'portfolios', `${portfolioUser?.uid}`, 'coins', `${portfolioUpdate?.symbol}`), {amount: `${parseFloat(addUserCoinAmount)+parseFloat(portfolioUpdate?.amount)}`})
+        : addDoc(doc(db, 'portfolios', `${portfolioUser?.uid}`, 'coins', `${portfolioUpdate?.symbol}`), portfolioUpdate)
         setAmountCoin('')
         setChosenCoin('')
         setPortfolioUpdate('')

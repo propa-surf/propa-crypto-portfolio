@@ -12,7 +12,7 @@ function UserCoinPortfolio({displayPortfolio, userCoins}) {
         <div className='portfolio-display-coin'>
             <p className='position-coin'><img className='portfolio-image-display' src={displayPortfolio.image} alt='Coin Symbol'/> {displayPortfolio.name}</p>
             <p className='position-amount'>{userCoins.amount}</p>
-            <p className='position-coin'>{parseFloat(userCoins[0].amount)*parseFloat(displayPortfolio.current_price)}</p>
+            <p className='position-coin'>{parseFloat(userCoins.amount)*parseFloat(displayPortfolio.current_price)}</p>
             <p className='position-coin'>X%</p>
         </div>
         {/* {

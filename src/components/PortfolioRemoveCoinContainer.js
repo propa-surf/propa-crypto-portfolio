@@ -12,7 +12,7 @@ function PortfolioRemoveCoinContainer({allCoins, userCoins, portfolioUser}) {
     amount:''
   })
 
-  const displayPortfolio = allCoins.filter(coinList => coinList.symbol === userCoins[0].symbol)
+  const displayPortfolio = allCoins.filter(coinList => coinList.symbol === userCoins.symbol)
 
   const handleRemoval=(e)=> {
     e.preventDefault()
@@ -35,7 +35,7 @@ function PortfolioRemoveCoinContainer({allCoins, userCoins, portfolioUser}) {
       <form className='portfolio-display-remove' onSubmit={handleRemoval}>
           <div className='portfolio-display-remove-coin'>
               <label htmlFor='coin-selection-remove' className='coin-selection-remove'>Select Coin:</label>
-              <select id='coin-selection-remove' onChange={(e)=>setCoinToReduce({id:e.target.value[0].symbol, symbol:e.target.value[0].symbol})} required>
+              <select id='coin-selection-remove' onChange={(e)=>setCoinToReduce({id:e.target.value.symbol, symbol:e.target.value.symbol})} required>
                 {
                   displayPortfolio.map(item=>{
                     return<option>
@@ -47,7 +47,7 @@ function PortfolioRemoveCoinContainer({allCoins, userCoins, portfolioUser}) {
           </div>
           <div className='portfolio-display-remove-amount'>
               <label htmlFor='amount-selection-remove' className='amount-selection-remove'>Amount:</label>
-              <input type='number' id='amount-selection-remove' placeholder='Amount' min='>0' max={coinToReduce.symbol===userCoins.symbol ? userCoins[0].amount : null} onChange={(e)=>setCoinToReduce({amount: e.target.value})} required/>
+              <input type='number' id='amount-selection-remove' placeholder='Amount' min='>0' max={coinToReduce.symbol===userCoins.symbol ? userCoins.amount : null} onChange={(e)=>setCoinToReduce({amount: e.target.value})} required/>
           </div>
           <button className='remove-btn'>Remove</button>
       </form>

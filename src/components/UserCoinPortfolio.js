@@ -10,9 +10,9 @@ function UserCoinPortfolio({displayPortfolio, userCoins}) {
             <p className='column-coin'>Allocation %</p>
         </div>
         <div className='portfolio-display-coin'>
-            <p className='position-coin'><img className='portfolio-image-display' src={displayPortfolio[0].image} alt='Coin Symbol'/> {displayPortfolio[0].name}</p>
-            <p className='position-amount'>{userCoins[0].amount}</p>
-            <p className='position-coin'>{parseFloat(userCoins[0].amount)*parseFloat(displayPortfolio[0].current_price)}</p>
+            <p className='position-coin'><img className='portfolio-image-display' src={displayPortfolio.image} alt='Coin Symbol'/> {displayPortfolio.name}</p>
+            <p className='position-amount'>{userCoins.amount}</p>
+            <p className='position-coin'>{parseFloat(userCoins[0].amount)*parseFloat(displayPortfolio.current_price)}</p>
             <p className='position-coin'>X%</p>
         </div>
         {/* {

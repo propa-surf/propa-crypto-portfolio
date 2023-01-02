@@ -11,10 +11,9 @@ function Portfolio({baseUrl}) {
 
     const[allCoins, setAllCoins]=useState([])
     const[userCoins, setUserCoins] = useState([])
-    // const[displayPortfolio, setDisplayPortfolio] = useState([])
 
     const user = getAuth();
-    const portfolioUser = user.currentUser
+    const portfolioCurrentUser = user.currentUser
 
     useEffect(() => {
       axios.get(`${baseUrl}/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=250&page=1&sparkline=false`)
@@ -26,27 +25,25 @@ function Portfolio({baseUrl}) {
     }, [])
 
     useEffect(() => {
-        const coinsRef=collection(db,'portfolios',`${portfolioUser.uid}`, 'coins')
+        const coinsRef=collection(db,'portfolios',`${portfolioCurrentUser.uid}`, 'coins')
         getDocs(coinsRef)
         .then(res=>{
             const list = (res.docs.map(item=>({
-                id: item.id,
-                ...item.data()
+                id: item?.id,
+                ...item?.data()
             }
                 )))
             setUserCoins(list)
         })
         .catch(err=>console.log(err))
     }, [])
-    
-    // setDisplayPortfolio(allCoins.filter(coinList => coinList.symbol === userCoins.symbol))
 
   return (
     <div className='portfolio-container'>
         <div className='portfolio-container-background'>
             <div className='overlay'></div>
-            <PortfolioAddCoinContainer allCoins={allCoins} userCoins={userCoins} portfolioUser={portfolioUser}/>
-            <PortfolioRemoveCoinContainer allCoins={allCoins} userCoins={userCoins} portfolioUser={portfolioUser}/>
+            <PortfolioAddCoinContainer allCoins={allCoins} userCoins={userCoins} portfolioCurrentUser={portfolioCurrentUser}/>
+            <PortfolioRemoveCoinContainer allCoins={allCoins} userCoins={userCoins} portfolioCUrrentUser={portfolioCurrentUser}/>
         </div>
     </div>
   )

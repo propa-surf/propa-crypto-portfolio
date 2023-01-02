@@ -4,25 +4,23 @@ import {db} from '../config/FirebaseConfig'
 import { doc, updateDoc, deleteDoc } from 'firebase/firestore'
 import UserCoinPortfolio from './UserCoinPortfolio'
 
-function PortfolioRemoveCoinContainer({allCoins, userCoins, portfolioUser}) {
+function PortfolioRemoveCoinContainer({allCoins, userCoins, portfolioCurrentUser}) {
 
   const[coinToReduce, setCoinToReduce] = useState({
-    id:'',
     symbol:'',
     amount:''
   })
 
-  const displayPortfolio = allCoins.filter(coinList => coinList.symbol === userCoins.symbol)
+  const displayPortfolio = allCoins?.filter(coinList => {return userCoins?.find(coin =>{return coin?.symbol === coinList?.symbol})})
 
   const handleRemoval=(e)=> {
     e.preventDefault()
-    const reductionUserCoin = userCoins.filter(coinList => coinList.symbol === coinToReduce.symbol)
-    const reductionUserCoinAmount=reductionUserCoin.map(item =>{return item.amount})
-    reductionUserCoinAmount <= coinToReduce.amount
-    ? deleteDoc(doc(db,'portfolios', `${portfolioUser.uid}`, 'coins', `${coinToReduce.symbol}`))
-    : updateDoc(doc(db, 'portfolios', `${portfolioUser.uid}`, 'coins', `${coinToReduce.symbol}`), {amount: `${parseFloat(reductionUserCoinAmount)-parseFloat(coinToReduce.amount)}`})
+    const reductionUserCoin = userCoins.filter(coinList => coinList?.symbol === coinToReduce?.symbol)
+    const reductionUserCoinAmount=reductionUserCoin.map(item =>{return item?.amount})
+    reductionUserCoinAmount <= coinToReduce?.amount
+    ? deleteDoc(doc(db,'portfolios', `${portfolioCurrentUser?.uid}`, 'coins', `${coinToReduce?.symbol}`))
+    : updateDoc(doc(db, 'portfolios', `${portfolioCurrentUser?.uid}`, 'coins', `${coinToReduce?.symbol}`), {amount: `${parseFloat(reductionUserCoinAmount)-parseFloat(coinToReduce?.amount)}`})
     setCoinToReduce({
-      id:'',
       symbol:'',
       amount:''
     })
@@ -39,7 +37,7 @@ function PortfolioRemoveCoinContainer({allCoins, userCoins, portfolioUser}) {
                 {
                   displayPortfolio.map(item=>{
                     return<option>
-                      {item.name}
+                      {item?.name}
                     </option>
                   })
                 }
@@ -47,7 +45,7 @@ function PortfolioRemoveCoinContainer({allCoins, userCoins, portfolioUser}) {
           </div>
           <div className='portfolio-display-remove-amount'>
               <label htmlFor='amount-selection-remove' className='amount-selection-remove'>Amount:</label>
-              <input type='number' id='amount-selection-remove' placeholder='Amount' min='>0' max={coinToReduce.symbol===userCoins.symbol ? userCoins.amount : null} onChange={(e)=>setCoinToReduce({amount: e.target.value})} required/>
+              <input type='number' id='amount-selection-remove' placeholder='Amount' min='>0' max={coinToReduce?.symbol===userCoins?.symbol ? userCoins?.amount : null} onChange={(e)=>setCoinToReduce({amount: e.target.value})} required/>
           </div>
           <button className='remove-btn'>Remove</button>
       </form>

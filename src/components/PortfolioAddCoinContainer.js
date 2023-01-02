@@ -2,9 +2,9 @@ import React, {useState} from 'react'
 import '../stylesheets/PortfolioAddCoinContainer.css'
 import CoinDetails from './CoinDetails'
 import {db} from '../config/FirebaseConfig'
-import { addDoc, doc, updateDoc } from 'firebase/firestore'
+import { doc, updateDoc, setDoc } from 'firebase/firestore'
 
-function PortfolioAddCoinContainer({allCoins, userCoins, portfolioUser}) {
+function PortfolioAddCoinContainer({allCoins, userCoins, portfolioCurrentUser}) {
 
     const[query, setQuery] = useState('')
     const[searchedCoin,setSearchedCoin] = useState('')
@@ -19,16 +19,16 @@ function PortfolioAddCoinContainer({allCoins, userCoins, portfolioUser}) {
     const handleSearch=(e)=>{
         setInputSearchField(e.target.value)
         setQuery(e.target.value)
-        setSearchedCoin(allCoins.filter(coin => coin.name.includes(`${query}`)))
+        setSearchedCoin(allCoins?.filter(coin => coin.name?.includes(`${query}`)))
     }
 
     const handlePortfolioUpdate=(e)=>{
         e.preventDefault()
-        const addUserCoin = userCoins?.filter(coinList => coinList?.symbol === portfolioUpdate?.symbol)
-        const addUserCoinAmount=addUserCoin[0]?.amount
-        addUserCoinAmount
-        ? updateDoc(doc(db, 'portfolios', `${portfolioUser?.uid}`, 'coins', `${portfolioUpdate?.symbol}`), {amount: `${parseFloat(addUserCoinAmount)+parseFloat(portfolioUpdate?.amount)}`})
-        : addDoc(doc(db, 'portfolios', `${portfolioUser?.uid}`, 'coins', `${portfolioUpdate?.symbol}`), portfolioUpdate)
+        const addedUserCoin = userCoins?.filter(coinList => coinList?.symbol === portfolioUpdate?.symbol)
+        const addedUserCoinAmount=addedUserCoin[0]?.amount
+        addedUserCoinAmount
+        ? updateDoc(doc(db, 'portfolios', `${portfolioCurrentUser?.uid}`, 'coins', `${portfolioUpdate?.symbol}`), {amount: `${parseFloat(addedUserCoinAmount)+parseFloat(portfolioUpdate?.amount)}`})
+        : setDoc(doc(db, 'portfolios', `${portfolioCurrentUser?.uid}`, 'coins', `${portfolioUpdate?.symbol}`), portfolioUpdate)
         setAmountCoin('')
         setChosenCoin('')
         setPortfolioUpdate('')
@@ -39,7 +39,7 @@ function PortfolioAddCoinContainer({allCoins, userCoins, portfolioUser}) {
     <div className='portfolio-search-main-container'>
         <form className='portfolio-search-container' onSubmit={handlePortfolioUpdate}>
             <h3 className='portfolio-search-header'>Account</h3>
-            <p className='portfolio-search-account'>Account-ID: {portfolioUser.displayName}</p>
+            <p className='portfolio-search-account'>Account-ID: {portfolioCurrentUser?.displayName}</p>
             <div className='portfolio-search-coin'>
                 <div className='portfolio-search-coin-search-field'>
                     <label htmlFor='coin-search-field' className='coin-search-field'>Coin:</label>
@@ -48,8 +48,8 @@ function PortfolioAddCoinContainer({allCoins, userCoins, portfolioUser}) {
                         query!==''
                         ? <div className='coin-search-results'>
                             {
-                                searchedCoin.map(setCoin=>{
-                                    return <CoinDetails key={setCoin.symbol} setCoin={setCoin} setChosenCoin={setChosenCoin} setQuery={setQuery} setPortfolioUpdate={setPortfolioUpdate}/>
+                                searchedCoin.map(searchedCoin=>{
+                                    return <CoinDetails key={searchedCoin?.symbol} searchedCoin={searchedCoin} setChosenCoin={setChosenCoin} setQuery={setQuery} setPortfolioUpdate={setPortfolioUpdate}/>
                                 })
                             }
                         </div>
@@ -62,7 +62,7 @@ function PortfolioAddCoinContainer({allCoins, userCoins, portfolioUser}) {
                         <p className='coin-current-price-display'>
                         {
                             chosenCoin
-                            ? `$ ${chosenCoin.current_price}`
+                            ? `$ ${chosenCoin?.current_price}`
                             : null
                             }</p>
                     </div>
@@ -71,7 +71,7 @@ function PortfolioAddCoinContainer({allCoins, userCoins, portfolioUser}) {
                         <p className='coin-current-mcap-display'>
                             {
                             chosenCoin
-                            ? `$ ${(chosenCoin.market_cap/1000000000).toFixed(2)} Billion`
+                            ? `$ ${(chosenCoin?.market_cap/1000000000).toFixed(2)} Billion`
                             : null
                             }</p>
                     </div>
@@ -83,7 +83,7 @@ function PortfolioAddCoinContainer({allCoins, userCoins, portfolioUser}) {
             </div>
             <div className='portfolio-search-summary'>
                 <p className='summary-position'>Summary Position</p>
-                <p className='summary-coin'>Coin: {chosenCoin.name}</p>
+                <p className='summary-coin'>Coin: {chosenCoin?.name}</p>
                 <p className='summary-amount'>Amount: {amountCoin}</p>
                 <p className='summary-worth'>{
                 chosenCoin && amountCoin

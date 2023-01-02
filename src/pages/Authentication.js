@@ -18,7 +18,7 @@ function Authentication() {
     createUserWithEmailAndPassword(auth, email, password)
     .then(res=>{
       updateProfile(auth.currentUser, {displayName:nickname})
-      setDoc(doc(db, 'portfolios', `${auth.currentUser.uid}`),{})
+      setDoc(doc(db, 'portfolios', `${auth.currentUser?.uid}`),{})
       navigate('/')
     })
     .catch(err=>{alert(err.code)})

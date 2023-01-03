@@ -62,7 +62,7 @@ function PortfolioAddCoinContainer({allCoins, userCoins, portfolioCurrentUser}) 
                         <p className='coin-current-price-display'>
                         {
                             chosenCoin
-                            ? `$ ${chosenCoin?.current_price}`
+                            ? `$ ${chosenCoin?.current_price.toFixed(2)}`
                             : null
                             }</p>
                     </div>

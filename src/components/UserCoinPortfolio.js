@@ -3,33 +3,64 @@ import React from 'react'
 function UserCoinPortfolio({displayPortfolio, userCoins}) {
   return (
     <div className='portfolio-display-table'>
-         <div className='portfolio-display-table-header'>
+        <div className='portfolio-column-coin'>
+            <p className='header-coin'>Coin</p>
+            {
+            displayPortfolio.map(item=>{
+                return <div className='portfolio-display-coin'>
+                            <p className='position-coin'><img src={item?.image} alt={item?.symbol} className='position-coin-image'/> {item?.name} ({item?.symbol})</p>
+                        </div>
+                })  
+            }
+        </div>
+        <div className='portfolio-column-amount'>
+            <p className='header-amount'>Amount</p>
+            {
+            displayPortfolio.map(item=>{
+                return <div className='portfolio-display-amount'>
+                            <p className='position-amount'>{userCoins.filter(userCoinItem=>userCoinItem?.symbol === item?.symbol).map(userCoinItemFiltered =>(userCoinItemFiltered?.amount))}</p>
+                        </div>
+                })  
+            }
+        </div>
+        <div className='portfolio-column-worth'>
+            <p className='header-worth'>Worth</p>
+            {
+            displayPortfolio.map(item=>{
+                return <div className='portfolio-display-worth'>
+                            <p className='position-worth'>{userCoins.filter(userCoinItem=>userCoinItem?.symbol === item?.symbol).map(userCoinItemFiltered =>(parseFloat(userCoinItemFiltered?.amount)*parseFloat(item?.current_price)).toFixed(2))}</p>
+                        </div>
+                })  
+            }
+        </div>
+        <div className='portfolio-column-allocation'>
+            <p className='header-allocation'>Allocation</p>
+            {
+            displayPortfolio.map(item=>{
+                return <div className='portfolio-display-allocation'>
+                           <p className='position-allocation'>{item.symbol} %</p>
+                        </div>
+                })  
+            }
+        </div>
+         {/* <div className='portfolio-display-table-header'>
              <p className='column-coin'>Coin</p>
              <p className='column-amount'>Amount</p>
              <p className='column-coin'>Worth</p>
              <p className='column-coin'>Allocation %</p>
          </div>
-    {/* //     <div className='portfolio-display-coin'>
-    //         <p className='position-coin'><img className='portfolio-image-display' src={displayPortfolio?.image} alt='Coin Symbol'/> {displayPortfolio?.name}</p>
-    //         <p className='position-amount'>{userCoins?.amount}</p>
-    //         <p className='position-coin'>{parseFloat(userCoins?.amount)*parseFloat(displayPortfolio?.current_price)}</p>
-    //         <p className='position-coin'>X%</p>
-    //     </div> */}
-        <div className='portfolio-display-coin'>
+        <div className='portfolio-display-coin-portfolio'>
         {
-            userCoins.map(item=>{
-                return displayPortfolio.filter(coin => item.symbol === coin.symbol)
-                ?
-                <div className='portfolio-display-coin'>
-                    <p className='position-coin'>{displayPortfolio.image} {displayPortfolio.name} {item.symbol}</p>
-                    <p className='position-amount'>{item.amount}</p>
-                    <p className='position-coin'>`${parseFloat(item.amount)*parseFloat(displayPortfolio.current_price)}`</p>
-                    <p className='position-coin'>Allocation % Worth/Total Amount</p>
-                </div>
-                : null
-            })
+            displayPortfolio.map(item=>{
+                return <div className='portfolio-display-coin'>
+                            <p className='position-coin'><img src={item?.image} alt={item?.symbol} className='position-coin-image'/> {item?.name} ({item?.symbol})</p>
+                            <p className='position-amount'>{userCoins.filter(userCoinItem=>userCoinItem?.symbol === item?.symbol).map(userCoinItemFiltered =>(userCoinItemFiltered?.amount))}</p>
+                            <p className='position-coin'>{userCoins.filter(userCoinItem=>userCoinItem?.symbol === item?.symbol).map(userCoinItemFiltered =>(parseFloat(userCoinItemFiltered?.amount)*parseFloat(item?.current_price)).toFixed(2))}</p>
+                            <p className='position-coin'>%</p>
+                        </div>
+            })  
         }
-        </div>
+        </div> */}
     </div>
   )
 }

@@ -46,6 +46,13 @@
 }
 
 .homepage-slider-btn{
+    background-color: var(--primary-bg-color);
+    color: var(--secondary-text-color);
+    border: none;
+    padding: 8px 4px;
+    box-shadow: 1px 1px 3px var(--primary-bg-color);
+    border-radius: 4px;
+    font-size: 12px;
     width: 150px;
     cursor: pointer;
 }

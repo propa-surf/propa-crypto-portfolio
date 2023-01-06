@@ -15,14 +15,11 @@ function PortfolioRemoveCoinContainer({allCoins, userCoins, portfolioCurrentUser
     e.preventDefault()
     const reductionUserCoin = userCoins.filter(coinList => coinList?.symbol === coinToReduce[0]?.symbol)
     const reductionUserCoinAmount=reductionUserCoin.map(item =>{return item?.amount})
-    console.log(coinToReduce[0]?.symbol)
-    console.log(reductionUserCoinAmount[0])
-    console.log(reductionAmount)
-    console.log(portfolioCurrentUser)
     parseFloat(reductionUserCoinAmount[0]) <= parseFloat(reductionAmount)
     ? deleteDoc(doc(db,'portfolios', `${portfolioCurrentUser?.uid}`, 'coins', `${coinToReduce[0]?.symbol}`))
     : updateDoc(doc(db, 'portfolios', `${portfolioCurrentUser?.uid}`, 'coins', `${coinToReduce[0]?.symbol}`), {amount: `${parseFloat(reductionUserCoinAmount[0])-parseFloat(reductionAmount)}`})
     setCoinToReduce('')
+    setReductionAmount('')
   }
 
   return (
@@ -33,6 +30,7 @@ function PortfolioRemoveCoinContainer({allCoins, userCoins, portfolioCurrentUser
           <div className='portfolio-display-remove-coin-selector'>
               <label htmlFor='coin-selection-remove' className='coin-selection-remove'>Select Coin:</label>
               <select id='coin-selection-remove' onChange={(e)=>setCoinToReduce(displayPortfolio?.filter(coin=>coin?.name === e.target.value))} required>
+                <option selected>Select Coin</option>
                 {
                   displayPortfolio.map(item=>{
                     return<option>

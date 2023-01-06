@@ -35,6 +35,26 @@
     width: 250px;
 }
 
+.coin-search-results{
+    background-color: var(--secondary-bg-color);
+    position:absolute;
+    top:42%;
+    left:13.3%;
+    height:200px;
+    width:258px;
+    padding: 0px 4px;
+    animation: input 0.5s ease 0s 1 normal forwards;
+    overflow: scroll;
+}
+
+.coin-list-container{
+    cursor:pointer;
+}
+
+.coin-list-container:hover{
+    border:solid 1px gray;
+}
+
 .summary-position{
     text-decoration: underline;
 }

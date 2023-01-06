@@ -18,8 +18,8 @@ function PortfolioAddCoinContainer({allCoins, userCoins, portfolioCurrentUser}) 
     
     const handleSearch=(e)=>{
         setInputSearchField(e.target.value)
-        setQuery(e.target.value)
-        setSearchedCoin(allCoins?.filter(coin => coin.name?.includes(`${query}`)))
+        setQuery(e.target.value.toLowerCase())
+        setSearchedCoin(allCoins?.filter(coin => coin.name?.toLowerCase().includes(`${query}`)))
     }
 
     const handlePortfolioUpdate=(e)=>{
@@ -49,7 +49,7 @@ function PortfolioAddCoinContainer({allCoins, userCoins, portfolioCurrentUser}) 
                         ? <div className='coin-search-results'>
                             {
                                 searchedCoin.map(searchedCoin=>{
-                                    return <CoinDetails key={searchedCoin?.symbol} searchedCoin={searchedCoin} setChosenCoin={setChosenCoin} setQuery={setQuery} setPortfolioUpdate={setPortfolioUpdate}/>
+                                    return <CoinDetails key={searchedCoin?.symbol} searchedCoin={searchedCoin} setChosenCoin={setChosenCoin} setQuery={setQuery} setPortfolioUpdate={setPortfolioUpdate} setInputSearchField={setInputSearchField}/>
                                 })
                             }
                         </div>

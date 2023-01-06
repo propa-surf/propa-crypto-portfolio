@@ -13,7 +13,7 @@ function Portfolio({baseUrl}) {
     const[userCoins, setUserCoins] = useState([])
 
     const user = getAuth();
-    const portfolioCurrentUser = user.currentUser
+    const portfolioCurrentUser = user?.currentUser
 
     useEffect(() => {
       axios.get(`${baseUrl}/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=250&page=1&sparkline=false`)
@@ -25,7 +25,7 @@ function Portfolio({baseUrl}) {
     }, [])
 
     useEffect(() => {
-        const coinsRef=collection(db,'portfolios',`${portfolioCurrentUser.uid}`, 'coins')
+        const coinsRef=collection(db,'portfolios',`${portfolioCurrentUser?.uid}`, 'coins')
         getDocs(coinsRef)
         .then(res=>{
             const list = (res.docs.map(item=>({

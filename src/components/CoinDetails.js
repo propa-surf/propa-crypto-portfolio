@@ -1,9 +1,9 @@
 import React from 'react'
 import '../stylesheets/CoinDetails.css'
 
-function CoinDetails({searchedCoin, setChosenCoin, setQuery, setPortfolioUpdate}) {
+function CoinDetails({searchedCoin, setChosenCoin, setQuery, setPortfolioUpdate, setInputSearchField}) {
   return (
-    <div key={searchedCoin?.id} className='coin-list-container' onClick={()=>{setChosenCoin(searchedCoin);setQuery('');setPortfolioUpdate({symbol: searchedCoin?.symbol})}}>
+    <div key={searchedCoin?.id} className='coin-list-container' onClick={()=>{setChosenCoin(searchedCoin);setQuery('');setPortfolioUpdate({symbol: searchedCoin?.symbol}); setInputSearchField(searchedCoin?.name)}}>
             <img className='coin-search-image' src={searchedCoin?.image} alt={searchedCoin?.id}/>
             <p className='coin-list-name'>{searchedCoin?.name}</p>
             <p className='coin-list-symbol'>({searchedCoin?.symbol})</p>

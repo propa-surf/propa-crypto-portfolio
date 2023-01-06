@@ -28,7 +28,7 @@ function UserCoinPortfolio({displayPortfolio, userCoins}) {
             {
             displayPortfolio.map(item=>{
                 return <div className='portfolio-display-worth'>
-                            <p className='position-worth'>{userCoins.filter(userCoinItem=>userCoinItem?.symbol === item?.symbol).map(userCoinItemFiltered =>(parseFloat(userCoinItemFiltered?.amount)*parseFloat(item?.current_price)).toFixed(2))}</p>
+                            <p className='position-worth'>$ {userCoins.filter(userCoinItem=>userCoinItem?.symbol === item?.symbol).map(userCoinItemFiltered =>(parseFloat(userCoinItemFiltered?.amount)*parseFloat(item?.current_price)).toFixed(2))}</p>
                         </div>
                 })  
             }

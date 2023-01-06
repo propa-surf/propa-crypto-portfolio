@@ -43,7 +43,7 @@ function Portfolio({baseUrl}) {
         <div className='portfolio-container-background'>
             <div className='overlay'></div>
             <PortfolioAddCoinContainer allCoins={allCoins} userCoins={userCoins} portfolioCurrentUser={portfolioCurrentUser}/>
-            <PortfolioRemoveCoinContainer allCoins={allCoins} userCoins={userCoins} portfolioCUrrentUser={portfolioCurrentUser}/>
+            <PortfolioRemoveCoinContainer allCoins={allCoins} userCoins={userCoins} portfolioCurrentUser={portfolioCurrentUser}/>
         </div>
     </div>
   )

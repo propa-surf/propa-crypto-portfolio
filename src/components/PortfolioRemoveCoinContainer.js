@@ -18,6 +18,7 @@ function PortfolioRemoveCoinContainer({allCoins, userCoins, portfolioCurrentUser
     console.log(coinToReduce[0]?.symbol)
     console.log(reductionUserCoinAmount[0])
     console.log(reductionAmount)
+    console.log(portfolioCurrentUser)
     parseFloat(reductionUserCoinAmount[0]) <= parseFloat(reductionAmount)
     ? deleteDoc(doc(db,'portfolios', `${portfolioCurrentUser?.uid}`, 'coins', `${coinToReduce[0]?.symbol}`))
     : updateDoc(doc(db, 'portfolios', `${portfolioCurrentUser?.uid}`, 'coins', `${coinToReduce[0]?.symbol}`), {amount: `${parseFloat(reductionUserCoinAmount[0])-parseFloat(reductionAmount)}`})

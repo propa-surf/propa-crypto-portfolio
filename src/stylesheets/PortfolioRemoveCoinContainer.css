@@ -28,10 +28,12 @@
 
 .header-coin, .header-amount, .header-worth, .header-allocation{
     margin-bottom: 16px;
+    text-align: center;
 }
 
 .position-coin, .position-amount, .position-worth, .position-allocation{
     margin-bottom: 8px;
+    text-align: center;
 }
 
 .portfolio-display-remove-form{

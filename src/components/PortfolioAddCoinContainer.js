@@ -4,7 +4,7 @@ import CoinDetails from './CoinDetails'
 import {db} from '../config/FirebaseConfig'
 import { doc, updateDoc, setDoc } from 'firebase/firestore'
 
-function PortfolioAddCoinContainer({allCoins, userCoins, portfolioCurrentUser}) {
+function PortfolioAddCoinContainer({allCoins, userCoins, userID, userName}) {
 
     const[query, setQuery] = useState('')
     const[searchedCoin,setSearchedCoin] = useState('')
@@ -27,8 +27,8 @@ function PortfolioAddCoinContainer({allCoins, userCoins, portfolioCurrentUser}) 
         const addedUserCoin = userCoins?.filter(coinList => coinList?.symbol === portfolioUpdate?.symbol)
         const addedUserCoinAmount=addedUserCoin[0]?.amount
         addedUserCoinAmount
-        ? updateDoc(doc(db, 'portfolios', `${portfolioCurrentUser?.uid}`, 'coins', `${portfolioUpdate?.symbol}`), {amount: `${parseFloat(addedUserCoinAmount)+parseFloat(portfolioUpdate?.amount)}`})
-        : setDoc(doc(db, 'portfolios', `${portfolioCurrentUser?.uid}`, 'coins', `${portfolioUpdate?.symbol}`), portfolioUpdate)
+        ? updateDoc(doc(db, 'portfolios', `${userID}`, 'coins', `${portfolioUpdate?.symbol}`), {amount: `${parseFloat(addedUserCoinAmount)+parseFloat(portfolioUpdate?.amount)}`})
+        : setDoc(doc(db, 'portfolios', `${userID}`, 'coins', `${portfolioUpdate?.symbol}`), portfolioUpdate)
         setAmountCoin('')
         setChosenCoin('')
         setPortfolioUpdate('')
@@ -39,7 +39,7 @@ function PortfolioAddCoinContainer({allCoins, userCoins, portfolioCurrentUser}) 
     <div className='portfolio-search-main-container'>
         <form className='portfolio-search-container' onSubmit={handlePortfolioUpdate}>
             <h3 className='portfolio-search-header'>Account</h3>
-            <p className='portfolio-search-account'>Account-ID: {portfolioCurrentUser?.displayName}</p>
+            <p className='portfolio-search-account'>ID: {userName}</p>
             <div className='portfolio-search-coin'>
                 <div className='portfolio-search-coin-search-field'>
                     <label htmlFor='coin-search-field' className='coin-search-field'>Coin:</label>
@@ -91,8 +91,10 @@ function PortfolioAddCoinContainer({allCoins, userCoins, portfolioCurrentUser}) 
                 : 'Worth:'
                 }</p>
             </div>
-            <button className='add-btn' type="submit">Add</button>
-            <button className='clear-btn' type="reset" onClick={()=>{setQuery('');setAmountCoin('');setChosenCoin('');setPortfolioUpdate({symbol:'',amount:''});setInputSearchField('')}}>Clear</button>
+            <div className='btn-container'>
+                <button className='add-btn' type="submit">Add</button>
+                <button className='clear-btn' type="reset" onClick={()=>{setQuery('');setAmountCoin('');setChosenCoin('');setPortfolioUpdate({symbol:'',amount:''});setInputSearchField('')}}>Clear</button>
+            </div>
         </form>
     </div>
   )

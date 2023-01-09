@@ -1,4 +1,5 @@
 import React from 'react'
+import '../stylesheets/PortfolioRemoveCoinContainer.css'
 
 function UserCoinPortfolio({displayPortfolio, userCoins}) {
   return (
@@ -7,7 +8,7 @@ function UserCoinPortfolio({displayPortfolio, userCoins}) {
             <p className='header-coin'>Coin</p>
             {
             displayPortfolio.map(item=>{
-                return <div className='portfolio-display-coin'>
+                return <div className='portfolio-display-coin' key={item?.id}>
                             <p className='position-coin'><img src={item?.image} alt={item?.symbol} className='position-coin-image'/> {item?.name} ({item?.symbol})</p>
                         </div>
                 })  
@@ -17,7 +18,7 @@ function UserCoinPortfolio({displayPortfolio, userCoins}) {
             <p className='header-amount'>Amount</p>
             {
             displayPortfolio.map(item=>{
-                return <div className='portfolio-display-amount'>
+                return <div className='portfolio-display-amount' key={item?.id}>
                             <p className='position-amount'>{userCoins.filter(userCoinItem=>userCoinItem?.symbol === item?.symbol).map(userCoinItemFiltered =>(userCoinItemFiltered?.amount))}</p>
                         </div>
                 })  
@@ -27,7 +28,7 @@ function UserCoinPortfolio({displayPortfolio, userCoins}) {
             <p className='header-worth'>Worth</p>
             {
             displayPortfolio.map(item=>{
-                return <div className='portfolio-display-worth'>
+                return <div className='portfolio-display-worth' key={item?.id}>
                             <p className='position-worth'>$ {userCoins.filter(userCoinItem=>userCoinItem?.symbol === item?.symbol).map(userCoinItemFiltered =>(parseFloat(userCoinItemFiltered?.amount)*parseFloat(item?.current_price)).toFixed(2))}</p>
                         </div>
                 })  
@@ -37,7 +38,7 @@ function UserCoinPortfolio({displayPortfolio, userCoins}) {
             <p className='header-allocation'>Allocation</p>
             {
             displayPortfolio.map(item=>{
-                return <div className='portfolio-display-allocation'>
+                return <div className='portfolio-display-allocation' key={item?.id}>
                            <p className='position-allocation'>{item.symbol} %</p>
                         </div>
                 })  

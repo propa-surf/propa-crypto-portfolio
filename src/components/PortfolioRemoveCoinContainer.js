@@ -4,27 +4,25 @@ import {db} from '../config/FirebaseConfig'
 import { doc, updateDoc, deleteDoc } from 'firebase/firestore'
 import UserCoinPortfolio from './UserCoinPortfolio'
 
-function PortfolioRemoveCoinContainer({allCoins, userCoins, portfolioCurrentUser}) {
+function PortfolioRemoveCoinContainer({allCoins, userCoins, userID}) {
 
   const[coinToReduce, setCoinToReduce] = useState([])
   const[reductionAmount, setReductionAmount] = useState('')
-  const [displayPortfolio, setDisplayPortfolio] = useState([])
+  // const [displayPortfolio, setDisplayPortfolio] = useState([])
 
-  useEffect(() => {
-    setDisplayPortfolio(allCoins?.filter(coinList => {return userCoins?.find(coin =>{return coin?.symbol === coinList?.symbol})}))
-  }, [])
+  // useEffect(() => {
+  //   setDisplayPortfolio(allCoins?.filter(coinList => {return userCoins?.find(coin =>{return coin?.symbol === coinList?.symbol})}))
+  // }, [])
+
+const displayPortfolio = allCoins?.filter(allCoinList => {return userCoins?.find(coin =>{return coin?.symbol === allCoinList?.symbol})})
 
   const handleRemoval=(e)=> {
     e.preventDefault()
     const reductionUserCoin = userCoins.filter(coinList => coinList?.symbol === coinToReduce[0]?.symbol)
     const reductionUserCoinAmount=reductionUserCoin.map(item =>{return item?.amount})
     parseFloat(reductionUserCoinAmount[0]) <= parseFloat(reductionAmount)
-    ? deleteDoc(doc(db,'portfolios', `${portfolioCurrentUser?.uid}`, 'coins', `${coinToReduce[0]?.symbol}`))
-    : updateDoc(doc(db, 'portfolios', `${portfolioCurrentUser?.uid}`, 'coins', `${coinToReduce[0]?.symbol}`), {amount: `${parseFloat(reductionUserCoinAmount[0])-parseFloat(reductionAmount)}`})
-    // setCoinToReduce([])
-    // setReductionAmount('')
-    // console.log(coinToReduce)
-    // console.log(reductionAmount)
+    ? deleteDoc(doc(db,'portfolios', `${userID}`, 'coins', `${coinToReduce[0]?.symbol}`))
+    : updateDoc(doc(db, 'portfolios', `${userID}`, 'coins', `${coinToReduce[0]?.symbol}`), {amount: `${parseFloat(reductionUserCoinAmount[0])-parseFloat(reductionAmount)}`})
     e.target.reset()
   }
 
@@ -35,11 +33,11 @@ function PortfolioRemoveCoinContainer({allCoins, userCoins, portfolioCurrentUser
       <form className='portfolio-display-remove-form' onSubmit={handleRemoval}>
           <div className='portfolio-display-remove-coin-selector'>
               <label htmlFor='coin-selection-remove' className='coin-selection-remove'>Select Coin:</label>
-              <select id='coin-selection-remove' onChange={(e)=>setCoinToReduce(displayPortfolio?.filter(coin=>coin?.name === e.target.value))} required>
-                <option selected>Select Coin</option>
+              <select id='coin-selection-remove' defaultValue={'Select Coin'} onChange={(e)=>setCoinToReduce(displayPortfolio?.filter(coin=>coin?.name === e.target.value))} required>
+                <option>Select Coin</option>
                 {
                   displayPortfolio.map(item=>{
-                    return<option>
+                    return<option key={item?.id}>
                       {item?.name}
                     </option>
                   })

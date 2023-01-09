@@ -6,7 +6,7 @@
 }
 
 .portfolio-search-container{
-    width: 300px;
+    width: 250px;
     display: flex;
     flex-direction: column;
 }
@@ -88,6 +88,12 @@
     border-radius: 4px;
 }
 
+.btn-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
 .add-btn{
     background-color: var(--primary-bg-color);
     color: var(--secondary-text-color);
@@ -95,9 +101,8 @@
     padding: 8px 4px;
     box-shadow: 1px 1px 3px var(--primary-bg-color);
     border-radius: 4px;
-    width: 120px;
+    width: 110px;
     font-size: 16px;
-    margin-bottom: 8px;
 }
 
 .clear-btn{
@@ -107,6 +112,83 @@
     padding: 8px 4px;
     box-shadow: 1px 1px 3px var(--primary-bg-color);
     border-radius: 4px;
-    width: 120px;
+    width: 110px;
     font-size: 16px;
 }
+
+@media (max-width: 1160px){
+
+    .portfolio-search-main-container{
+        margin-bottom: 16px;
+        margin-left: 0px;
+    }
+
+    .portfolio-search-container{
+        width: 450px;
+        display: grid;
+        grid-template: auto auto auto auto auto/ 60% 40%;
+        grid-template-areas: 
+        'header header'
+        'id id'
+        'search summary'
+        'amount btn';
+    }
+
+    .portfolio-search-header{
+        grid-area: header;
+    }
+
+    .portfolio-search-account{
+        grid-area: id;
+    }
+
+    .portfolio-search-coin{
+        grid-area: search;
+    }
+
+    .portfolio-search-add-field{
+        grid-area: amount;
+    }
+
+    .portfolio-search-summary{
+        grid-area: summary;
+    }
+
+    .btn-container{
+        grid-area: btn;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .add-btn{
+        margin-bottom: 0px;
+    }
+
+    .add-btn, .clear-btn{
+        width: 80px;
+    }
+    
+    }
+
+    @media (max-width: 600px){
+
+        .portfolio-search-main-container{
+            margin-bottom: 16px;
+            margin-left: 0px;
+        }
+    
+        .portfolio-search-container{
+            width: 250px;
+            display: grid;
+            grid-template: auto auto auto auto auto auto auto / 100%;
+            grid-template-areas: 
+            'header'
+            'id'
+            'search'
+            'amount'
+            'summary'
+            'btn';
+        }
+        
+        }

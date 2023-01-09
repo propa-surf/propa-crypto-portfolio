@@ -43,6 +43,22 @@ function Header() {
             <ContactModal className='contact-overlay' modalIsOpen={modalIsOpen} closeModal={closeModal}/>
             <p onClick={openModal}>Contact</p>
         </div>
+        <div className="burger-container">
+          <label htmlFor="burger" className="burger">&#9776;</label>
+          <input id="burger" type="checkbox"/>
+          <div className="nav-section">
+            <Link className='link' to='/'>Home</Link>
+              {
+                user
+                ?<div className='nav-section-user-logged-in'>
+                  <Link className='link' to='/portfolio'>User Portfolio</Link>
+                  <Link className='link' to='/' onClick={()=>signOut(auth)}>Logout</Link>
+                </div>
+                :<Link className='link' to='/auth'>Login</Link>
+              }
+            <p className='link' onClick={openModal}>Contact</p>
+          </div>
+        </div>
     </div>
   )
 }

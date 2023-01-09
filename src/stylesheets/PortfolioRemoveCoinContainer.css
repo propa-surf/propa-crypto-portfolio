@@ -1,7 +1,7 @@
 .portfolio-display-container{
     background-color: var(--secondary-bg-color);
     margin-right: 24px;
-    width: 700px;
+    width: 600px;
     border-radius: 16px;
     padding: 16px;
     display: flex;
@@ -69,7 +69,41 @@
     padding: 8px 4px;
     box-shadow: 1px 1px 3px var(--primary-bg-color);
     border-radius: 4px;
-    width: 120px;
+    width: 110px;
     font-size: 16px;
     margin-bottom: 8px;
+}
+
+@media (max-width: 1160px){
+
+    .portfolio-display-container{
+        margin-right: 0px;
+        width:485px;
+        overflow-x: scroll;
+    }
+
+    .portfolio-display-table{
+        width: 600px;
+    }
+
+    .remove-btn{
+        width: 80px;
+    }
+}
+
+@media (max-width: 600px){
+
+    .portfolio-display-container{
+        margin-right: 0px;
+        width:282px;
+        overflow-x: scroll;
+    }
+
+    .portfolio-display-table{
+        width: 600px;
+    }
+
+    .remove-btn{
+        width: 80px;
+    }
 }

@@ -87,13 +87,13 @@ function PortfolioAddCoinContainer({allCoins, userCoins, portfolioCurrentUser}) 
                 <p className='summary-amount'>Amount: {amountCoin}</p>
                 <p className='summary-worth'>{
                 chosenCoin && amountCoin
-                ? `Worth: ${parseFloat(amountCoin)*parseFloat(chosenCoin.current_price)}`
+                ? `Worth: ${(parseFloat(amountCoin)*parseFloat(chosenCoin.current_price)).toFixed(2)}`
                 : 'Worth:'
                 }</p>
             </div>
-            <button className='add-btn'>Add</button>
+            <button className='add-btn' type="submit">Add</button>
+            <button className='clear-btn' type="reset" onClick={()=>{setQuery('');setAmountCoin('');setChosenCoin('');setPortfolioUpdate({symbol:'',amount:''});setInputSearchField('')}}>Clear</button>
         </form>
-        <button className='clear-btn' onClick={()=>{setQuery('');setAmountCoin('');setChosenCoin('');setPortfolioUpdate({symbol:'',amount:''});setInputSearchField('')}}>Clear</button>
     </div>
   )
 }

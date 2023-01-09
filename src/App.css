@@ -21,3 +21,6 @@ html, body{
   font-family: 'KoHo Regular', sans-serif;
 }
 
+button{
+  cursor: pointer;
+}

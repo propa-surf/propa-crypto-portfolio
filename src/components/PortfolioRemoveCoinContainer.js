@@ -18,8 +18,11 @@ function PortfolioRemoveCoinContainer({allCoins, userCoins, portfolioCurrentUser
     parseFloat(reductionUserCoinAmount[0]) <= parseFloat(reductionAmount)
     ? deleteDoc(doc(db,'portfolios', `${portfolioCurrentUser?.uid}`, 'coins', `${coinToReduce[0]?.symbol}`))
     : updateDoc(doc(db, 'portfolios', `${portfolioCurrentUser?.uid}`, 'coins', `${coinToReduce[0]?.symbol}`), {amount: `${parseFloat(reductionUserCoinAmount[0])-parseFloat(reductionAmount)}`})
-    setCoinToReduce('')
-    setReductionAmount('')
+    // setCoinToReduce([])
+    // setReductionAmount('')
+    // console.log(coinToReduce)
+    // console.log(reductionAmount)
+    e.target.reset()
   }
 
   return (
@@ -44,7 +47,8 @@ function PortfolioRemoveCoinContainer({allCoins, userCoins, portfolioCurrentUser
               <label htmlFor='amount-selection-remove' className='amount-selection-remove'>Amount:</label>
               <input type='number' id='amount-selection-remove' placeholder='Amount' min='>0' max={userCoins.filter(coinList => coinList?.symbol === coinToReduce[0]?.symbol).map(item =>(item.amount))} onChange={(e)=>setReductionAmount(e.target.value)} required/>
           </div>
-          <button className='remove-btn'>Remove</button>
+          <button className='remove-btn' type="submit">Remove</button>
+          <button className='clear-btn' type="reset" onClick={()=>{setReductionAmount('');setCoinToReduce([])}}>Clear</button>
       </form>
     </div>
   )

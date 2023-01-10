@@ -9,7 +9,8 @@
     background-position: center;
     background-repeat: none;
     background-size: cover;
-    height: 80vh;
+    height: auto;
+    min-height: 77vh;
     width: 85vw;
     margin: 48px 56px;
     display: flex;
@@ -20,22 +21,12 @@
     z-index: 0;
 }
 
-.overlay{
-    position: absolute;
-    background-color: black;
-    width: 85vw;
-    height: 80vh;
-    z-index: -1;
-    opacity: 30%;
-    border-radius: 16px;
-}
-
 .homepage-slider-container{
     background-color: var(--secondary-bg-color);
-    height: 525px;
     width: 675px;
     border-radius: 16px;
     padding: 16px;
+    margin: 8px 8px;
 }
 
 .homepage-slider-header{

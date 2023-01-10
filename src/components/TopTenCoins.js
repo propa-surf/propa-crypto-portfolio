@@ -12,6 +12,7 @@ function TopTenCoins({topCoins}) {
                                 <p className='coin-list-name'>{item.name}</p>
                             </div>
                             <div className='coin-list-price-mcap'>
+                                <p className='coin-list-spacer'>|</p>
                                 <p className='coin-list-price'>Current Price: ${item.current_price}</p>
                                 <p className='coin-list-spacer'>|</p>
                                 <p className='coin-list-mcap'>Current MCap: ${(item.market_cap/1000000000).toFixed(2)} Billion</p>

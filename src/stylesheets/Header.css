@@ -44,3 +44,104 @@
     width: 0px;
     z-index: 2;
 }
+
+.burger-container{
+    display:none;
+}
+
+@media (max-width: 1160px){
+
+    .icon-title-container h1{
+        color: var(--secondary-text-color);
+        font-weight: 300;
+        font-size: 24px;
+        margin-left: 16px;
+    }
+    
+    .bitcoin-icon{
+        color: var(--secondary-text-color);
+        font-size: 32px;
+    }
+
+    .nav-container{
+        display: flex;
+        font-size: 20px;
+    }
+    
+    }
+
+    @media (max-width: 750px){
+
+        .nav-container{
+            display:none;
+        }
+
+        .burger-container{
+            display:block;
+        }
+    
+        .burger{
+            display: block;
+            color: var(--secondary-text-color);
+            font-size: 24px;
+          }
+          
+        #burger{
+            display: none;
+        }
+          
+        .burger-container label{
+            position: relative;
+            right: 10px;
+        }
+
+        .nav-section{
+            background-color: var(--primary-bg-color);
+            display: none;
+            width: 100%;
+            padding: 8px 8px;
+        }
+          
+        #burger:checked + .nav-section{
+            display: flex;
+            align-items: center;
+            justify-content: space-evenly;
+            position: absolute;
+            top: 64px;
+            right: 0px;
+        }
+
+        .nav-section-user-logged-in{
+            display: flex;
+            width: 550px;
+            justify-content: space-evenly;
+        }
+
+        .link{
+            text-decoration: none;
+            color: var(--secondary-text-color);
+            margin-right:0px;
+        }
+        
+        }
+
+        @media (max-width: 400px){
+
+            .icon-title-container h1{
+                color: var(--secondary-text-color);
+                font-weight: 300;
+                font-size: 16px;
+                margin-left: 16px;
+            }
+            
+            .bitcoin-icon{
+                color: var(--secondary-text-color);
+                font-size: 24px;
+            }
+
+            #burger:checked + .nav-section{
+                top: 61px;
+                right: 0px;
+            }
+
+        }

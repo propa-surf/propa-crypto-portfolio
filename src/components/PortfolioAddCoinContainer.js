@@ -4,7 +4,7 @@ import CoinDetails from './CoinDetails'
 import {db} from '../config/FirebaseConfig'
 import { doc, updateDoc, setDoc } from 'firebase/firestore'
 
-function PortfolioAddCoinContainer({allCoins, userCoins, userID, userName}) {
+function PortfolioAddCoinContainer({portfolioUpdated, setPortfolioUpdated, allCoins, userCoins, userID, userName}) {
 
     const[query, setQuery] = useState('')
     const[searchedCoin,setSearchedCoin] = useState('')
@@ -33,6 +33,7 @@ function PortfolioAddCoinContainer({allCoins, userCoins, userID, userName}) {
         setChosenCoin('')
         setPortfolioUpdate('')
         setInputSearchField('')
+        setPortfolioUpdated(!portfolioUpdated)
     }
 
   return (

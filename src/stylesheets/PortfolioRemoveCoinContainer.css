@@ -14,8 +14,7 @@
 
 .portfolio-display-table{
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    flex-direction: column;
     border: none;
     padding: 8px 8px;
     box-shadow: 1px 1px 3px var(--primary-bg-color);
@@ -26,13 +25,20 @@
     width: 15px;
 }
 
-.header-coin, .header-amount, .header-worth, .header-allocation{
-    margin-bottom: 16px;
-    text-align: center;
+.portfolio-display-table-categories, .portfolio-display-coin{
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
 }
 
-.position-coin, .position-amount, .position-worth, .position-allocation{
+.portfolio-display-table-categories{
+    margin-bottom: 12px;
+}
+
+.portfolio-display-coin p{
     margin-bottom: 8px;
+}
+
+.portfolio-display-table-categories p:nth-child(n+2), .portfolio-display-coin p:nth-child(n+2){
     text-align: center;
 }
 

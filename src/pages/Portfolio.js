@@ -11,7 +11,7 @@ function Portfolio({baseUrl}) {
 
     const[allCoins, setAllCoins]=useState([])
     const[userCoins, setUserCoins] = useState([])
-    // const [displayPortfolio, setDisplayPortfolio] = useState([])
+    const[portfolioUpdated, setPortfolioUpdated] = useState(false)
 
     const [user] = useAuthState(auth)
 
@@ -36,19 +36,14 @@ function Portfolio({baseUrl}) {
             setUserCoins(list)
         })
         .catch(err=>console.log(err))
-    }, [user])
-
-    // useEffect(() => {
-    //     setDisplayPortfolio(allCoins?.filter(coinList => {return userCoins?.find(coin =>{return coin?.symbol === coinList?.symbol})}))
-    //     console.log(displayPortfolio)
-    // }, [])
+    }, [user, portfolioUpdated])
 
   return (
     <div className='portfolio-container'>
         <div className='portfolio-container-background'>
             <div className='overlay'></div>
-            <PortfolioAddCoinContainer allCoins={allCoins} userCoins={userCoins} userID={user?.uid} userName={user?.displayName}/>
-            <PortfolioRemoveCoinContainer allCoins={allCoins} userCoins={userCoins} userID={user?.uid}/>
+            <PortfolioAddCoinContainer portfolioUpdated={portfolioUpdated} setPortfolioUpdated={setPortfolioUpdated} allCoins={allCoins} userCoins={userCoins} userID={user?.uid} userName={user?.displayName}/>
+            <PortfolioRemoveCoinContainer portfolioUpdated={portfolioUpdated} setPortfolioUpdated={setPortfolioUpdated} allCoins={allCoins} userCoins={userCoins} userID={user?.uid}/>
         </div>
     </div>
   )

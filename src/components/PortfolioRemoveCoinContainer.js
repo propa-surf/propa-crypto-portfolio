@@ -4,7 +4,7 @@ import {db} from '../config/FirebaseConfig'
 import { doc, updateDoc, deleteDoc } from 'firebase/firestore'
 import UserCoinPortfolio from './UserCoinPortfolio'
 
-function PortfolioRemoveCoinContainer({allCoins, userCoins, userID}) {
+function PortfolioRemoveCoinContainer({portfolioUpdated, setPortfolioUpdated, allCoins, userCoins, userID}) {
 
   const[coinToReduce, setCoinToReduce] = useState([])
   const[reductionAmount, setReductionAmount] = useState('')
@@ -24,6 +24,7 @@ const displayPortfolio = allCoins?.filter(allCoinList => {return userCoins?.find
     ? deleteDoc(doc(db,'portfolios', `${userID}`, 'coins', `${coinToReduce[0]?.symbol}`))
     : updateDoc(doc(db, 'portfolios', `${userID}`, 'coins', `${coinToReduce[0]?.symbol}`), {amount: `${parseFloat(reductionUserCoinAmount[0])-parseFloat(reductionAmount)}`})
     e.target.reset()
+    setPortfolioUpdated(!portfolioUpdated)
   }
 
   return (

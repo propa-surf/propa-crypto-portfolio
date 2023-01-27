@@ -36,15 +36,16 @@
 }
 
 .coin-search-results{
-    background-color: var(--secondary-bg-color);
+    background-color: var(--primary-bg-color);
     position:absolute;
-    top:42%;
-    left:13.3%;
+    top:43%;
     height:200px;
-    width:258px;
-    padding: 0px 4px;
+    width:251px;
+    padding: 8px;
     animation: input 0.5s ease 0s 1 normal forwards;
     overflow: scroll;
+    border-radius: 16px;
+    box-shadow: 1px 1px 3px var(--primary-bg-color);
 }
 
 .coin-list-container{
@@ -134,6 +135,11 @@
         'amount btn';
     }
 
+    .coin-search-results{
+        top:41.8%;
+        height:180px;
+    }
+
     .portfolio-search-header{
         grid-area: header;
     }
@@ -189,6 +195,10 @@
             'amount'
             'summary'
             'btn';
+        }
+
+        .coin-search-results{
+            height:200px;
         }
         
         }

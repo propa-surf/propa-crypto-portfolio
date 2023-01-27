@@ -1,13 +1,14 @@
-.coin-search-image{
-    width: 20px;
-    height:20px;
-    margin-right: 8px;
-}
-
 .coin-list-container{
     display: flex;
     justify-content: flex-start;
     align-items: center;
+    background-color: var(--secondary-bg-color);
+}
+
+.coin-search-image{
+    width: 20px;
+    height:20px;
+    margin: 0px 8px 0px 4px;
 }
 
 .coin-list-name{

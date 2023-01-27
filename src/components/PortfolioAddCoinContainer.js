@@ -80,7 +80,7 @@ function PortfolioAddCoinContainer({portfolioUpdated, setPortfolioUpdated, allCo
             </div>
             <div className='portfolio-search-add-field'>
                 <label htmlFor='coin-add-field' className='coin-add-field'>Add Amount:</label>
-                <input type='number' id='coin-add-field' placeholder='Amount' value={amountCoin} min='>0' onChange={(e)=>{setAmountCoin(e.target.value);setPortfolioUpdate({...portfolioUpdate, amount: e.target.value})}} required/>
+                <input type='number' id='coin-add-field' placeholder='Amount' value={amountCoin} step='any' min='0' onChange={(e)=>{setAmountCoin(e.target.value);setPortfolioUpdate({...portfolioUpdate, amount: e.target.value})}} required/>
             </div>
             <div className='portfolio-search-summary'>
                 <p className='summary-position'>Summary Position</p>

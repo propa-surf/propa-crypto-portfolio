@@ -39,7 +39,7 @@ const displayPortfolio = allCoins?.filter(allCoinList => {return userCoins?.find
                 {
                   displayPortfolio.map(item=>{
                     return<option key={item?.id}>
-                      {item?.name}
+                      {item?.name} ({userCoins.filter(userCoinItem=>userCoinItem?.symbol === item?.symbol).map(userCoinItemFiltered =>(userCoinItemFiltered?.amount))})
                     </option>
                   })
                 }
@@ -47,7 +47,7 @@ const displayPortfolio = allCoins?.filter(allCoinList => {return userCoins?.find
           </div>
           <div className='portfolio-display-remove-amount-input'>
               <label htmlFor='amount-selection-remove' className='amount-selection-remove'>Amount:</label>
-              <input type='number' id='amount-selection-remove' placeholder='Amount' min='>0' max={userCoins.filter(coinList => coinList?.symbol === coinToReduce[0]?.symbol).map(item =>(item.amount))} onChange={(e)=>setReductionAmount(e.target.value)} required/>
+              <input type='number' id='amount-selection-remove' placeholder='Amount' step='any' min='0' max={userCoins.filter(coinList => coinList?.symbol === coinToReduce[0]?.symbol).map(item =>(item.amount))} onChange={(e)=>setReductionAmount(e.target.value)} required/>
           </div>
           <button className='remove-btn' type="submit">Remove</button>
           <button className='clear-btn' type="reset" onClick={()=>{setReductionAmount('');setCoinToReduce([])}}>Clear</button>

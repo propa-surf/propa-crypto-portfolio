@@ -1,7 +1,18 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import '../stylesheets/PortfolioRemoveCoinContainer.css'
 
 function UserCoinPortfolio({displayPortfolio, userCoins}) {
+
+  // const[allValues, setAllValues]=useState([])
+
+  // useEffect(() => {
+  //    setAllValues(displayPortfolio?.map(item=>{ return userCoins?.filter(userCoinItem=>userCoinItem?.symbol === item?.symbol).map(userCoinItemFiltered =>(parseFloat(userCoinItemFiltered?.amount)*parseFloat(item?.current_price)).toFixed(2))}))
+  //    console.log(allValues)
+  //   }, [])
+
+  const allValues = displayPortfolio?.map(item=>{ return userCoins?.filter(userCoinItem=>userCoinItem?.symbol === item?.symbol).map(userCoinItemFiltered =>(parseFloat(userCoinItemFiltered?.amount)*parseFloat(item?.current_price)).toFixed(2))})
+  const totalValue = allValues?.reduce((result, [current]) => result + parseFloat(current), 0)
+
   return (
     <div className='portfolio-display-table'>
         <div className='portfolio-display-table-categories'>
@@ -16,7 +27,7 @@ function UserCoinPortfolio({displayPortfolio, userCoins}) {
                             <p><img src={item?.image} alt={item?.symbol} className='position-coin-image'/> {item?.name} ({item?.symbol})</p>
                             <p>{userCoins.filter(userCoinItem=>userCoinItem?.symbol === item?.symbol).map(userCoinItemFiltered =>(userCoinItemFiltered?.amount))}</p>
                             <p>${userCoins.filter(userCoinItem=>userCoinItem?.symbol === item?.symbol).map(userCoinItemFiltered =>(parseFloat(userCoinItemFiltered?.amount)*parseFloat(item?.current_price)).toFixed(2))}</p>
-                            <p>%</p>
+                            <p>{((((userCoins.filter(userCoinItem=>userCoinItem?.symbol === item?.symbol).map(userCoinItemFiltered =>(parseFloat(userCoinItemFiltered?.amount)*parseFloat(item?.current_price)).toFixed(2)))/totalValue)*100).toFixed(2))} %</p>
                         </div>
             })  
         }

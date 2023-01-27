@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState} from 'react'
 import '../stylesheets/PortfolioRemoveCoinContainer.css'
 import {db} from '../config/FirebaseConfig'
 import { doc, updateDoc, deleteDoc } from 'firebase/firestore'
@@ -8,13 +8,7 @@ function PortfolioRemoveCoinContainer({portfolioUpdated, setPortfolioUpdated, al
 
   const[coinToReduce, setCoinToReduce] = useState([])
   const[reductionAmount, setReductionAmount] = useState('')
-  // const [displayPortfolio, setDisplayPortfolio] = useState([])
-
-  // useEffect(() => {
-  //   setDisplayPortfolio(allCoins?.filter(coinList => {return userCoins?.find(coin =>{return coin?.symbol === coinList?.symbol})}))
-  // }, [])
-
-const displayPortfolio = allCoins?.filter(allCoinList => {return userCoins?.find(coin =>{return coin?.symbol === allCoinList?.symbol})})
+  const displayPortfolio = allCoins?.filter(allCoinList => {return userCoins?.find(coin =>{return coin?.symbol === allCoinList?.symbol})})
 
   const handleRemoval=(e)=> {
     e.preventDefault()

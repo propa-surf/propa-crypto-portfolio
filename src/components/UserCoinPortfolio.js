@@ -1,14 +1,7 @@
-import React, {useState, useEffect} from 'react'
+import React from 'react'
 import '../stylesheets/PortfolioRemoveCoinContainer.css'
 
 function UserCoinPortfolio({displayPortfolio, userCoins}) {
-
-  // const[allValues, setAllValues]=useState([])
-
-  // useEffect(() => {
-  //    setAllValues(displayPortfolio?.map(item=>{ return userCoins?.filter(userCoinItem=>userCoinItem?.symbol === item?.symbol).map(userCoinItemFiltered =>(parseFloat(userCoinItemFiltered?.amount)*parseFloat(item?.current_price)).toFixed(2))}))
-  //    console.log(allValues)
-  //   }, [])
 
   const allValues = displayPortfolio?.map(item=>{ return userCoins?.filter(userCoinItem=>userCoinItem?.symbol === item?.symbol).map(userCoinItemFiltered =>(parseFloat(userCoinItemFiltered?.amount)*parseFloat(item?.current_price)).toFixed(2))})
   const totalValue = allValues?.reduce((result, [current]) => result + parseFloat(current), 0)
